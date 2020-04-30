@@ -1,0 +1,280 @@
+<div class="container-fluid"> 
+    <div class="row justify-content-md-center">
+        <div class="col-sm-6">
+            <h1>Business Information</h1>
+        </div>            
+    </div>    
+
+    <form class="form" [formGroup]="generalInfo" (ngSubmit)="submitGeneral()">    
+
+        <div class="row justify-content-md-center">
+            <div class="col-sm-6">
+                <h2>General Information</h2>
+            </div>          
+        </div>
+
+        <div class="row justify-content-md-center ">            
+            <div class="col-sm-2">
+                <mat-form-field appearance="outline"> 
+                    <mat-label>Founding Year</mat-label>
+                    <input formControlName="foundingYear" matInput type="number" placeholder="1900" min="1900" max="2020">
+                </mat-form-field>  
+            </div>
+            <div class="col-sm-4">
+            <mat-form-field appearance="outline">
+                <mat-label>Industry</mat-label>
+                <mat-select formControlName="industry">
+                    <mat-option *ngFor="let industry of industries" [value]="industry.value">
+                        {{industry.value}}
+                    </mat-option>
+                </mat-select>       
+            </mat-form-field>    
+            </div>
+        </div>                        
+
+        <div class="row justify-content-md-center">
+            <div class="col-sm-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Size</mat-label>
+                    <mat-select formControlName="size">
+                        <mat-option *ngFor="let size of sizes" [value]="size.value">
+                            {{size.value}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>           
+            </div>
+        </div>    
+    </form>
+    
+    <form class="form" [formGroup]="legalInfo" (ngSubmit)="submitLegal()">
+        <div class="row justify-content-md-center">
+            <div class="col-sm-6">
+                <h2>Legal Information</h2>
+            </div>            
+        </div>  
+
+
+        <div class="row justify-content-md-center">
+            <div class="col-sm-2">
+                <mat-form-field appearance="outline">
+                    <mat-label>Practice Number</mat-label>
+                    <input formControlName="practiceNum" matInput type="text">
+                </mat-form-field>    
+            </div>      
+            <div class="col-sm-4">
+                <mat-form-field appearance="outline">                
+                    <mat-label>Annual Turnover</mat-label>
+                    <mat-select formControlName="turnover">
+                        <mat-option *ngFor="let turnover of turnovers" [value]="turnover.value">
+                            {{turnover.value}}
+                        </mat-option>      
+                    </mat-select>            
+                </mat-form-field>                    
+            </div>             
+        </div>
+
+
+        <div class="row justify-content-md-center">
+            <div class="col-sm-2">
+                <mat-form-field appearance="outline">
+                    <mat-label>Trust Number</mat-label>
+                    <input formControlName="trustNum" matInput type="text">
+                </mat-form-field>    
+            </div>       
+            <div class="col-sm-4">
+                <mat-form-field appearance="outline">
+                    <mat-label>NPO Number</mat-label>
+                    <input formControlName="NPONum"matInput type="text">         
+                </mat-form-field>
+            </div>           
+        </div>
+
+        <div class="row justify-content-md-center">
+            <div class="col-sm-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>PAYE Number</mat-label>
+                    <input formControlName="PAYENum" matInput type="text">
+                </mat-form-field>    
+            </div>       
+        </div>
+    </form>
+
+    <form class="form" [formGroup]="contactInfo" (ngSubmit)="submitContact()">
+        <div class="row justify-content-md-center">
+            <div class="col-sm-6">
+                <h2>Contact Information</h2>
+            </div>            
+        </div>
+
+        <div class="row justify-content-md-center">
+            <div class="col-sm-2">
+                <mat-form-field appearance="outline">
+                    <mat-label>Website</mat-label>
+                    <input formControlName="website" matInput type="text">
+                </mat-form-field>    
+            </div>       
+            <div class="col-sm-4">
+                <mat-form-field appearance="outline">
+                    <mat-label>Fax Number</mat-label>
+                    <input formControlName="faxNum"matInput type="text">         
+                </mat-form-field>
+            </div>           
+        </div>
+    </form>
+
+    <div class="row justify-content-md-center">
+        <div class="col-sm-2" >
+            <button mat-stroked-button color="primary">Cancel</button>
+        </div>
+        <div class="col-sm-4">
+            <button mat-stroked-button color="accent" (click)="onClickMe()">Next</button>            
+         </div>        
+    </div>    
+</div>
+
+<div class="spacer">
+    <div class="row justify-content-md-center">
+        <div class="col-sm-6">
+            <h1>Summary</h1>
+        </div>            
+    </div>    
+
+    <div class="row justify-content-md-center">
+        <div class="col-sm-6">
+            <h2>General Information</h2>            
+        </div>          
+    </div>
+
+    <div class="row justify-content-md-center">            
+        <div class="col-sm-2">            
+            <h3>Founding Year:</h3>               
+        </div>
+        <div class="col-sm-4">            
+            <h4>{{ foundingYear }}</h4>               
+        </div>
+    </div>        
+
+    <div class="row justify-content-md-center">            
+        <div class="col-sm-2">            
+            <h3>Industry:</h3>               
+        </div>
+        <div class="col-sm-4">            
+            <h4>{{ industry }}</h4>               
+        </div>
+    </div>     
+
+    <div class="row justify-content-md-center">            
+        <div class="col-sm-2">            
+            <h3>Size:</h3>               
+        </div>
+        <div class="col-sm-4">            
+            <h4>{{ size }}</h4>               
+        </div>
+    </div>       
+
+
+
+    <div class="row justify-content-md-center">
+        <div class="col-sm-6">
+            <h2>Legal Information</h2>            
+        </div>          
+    </div>
+    
+    <div class="row justify-content-md-center">            
+        <div class="col-sm-2">            
+            <h3>Practice Number:</h3>               
+        </div>
+        <div class="col-sm-4">            
+            <h4>{{ practiceNum }}</h4>               
+        </div>
+    </div> 
+
+
+    <div class="row justify-content-md-center">            
+        <div class="col-sm-2">            
+            <h3>Annual Turnover:</h3>               
+        </div>
+        <div class="col-sm-4">            
+            <h4>{{ turnover }}</h4>               
+        </div>
+    </div> 
+
+    <div class="row justify-content-md-center">            
+        <div class="col-sm-2">            
+            <h3>Trust Number:</h3>               
+        </div>
+        <div class="col-sm-4">            
+            <h4>{{ trustNum }}</h4>               
+        </div>
+    </div> 
+
+    <div class="row justify-content-md-center">            
+        <div class="col-sm-2">            
+            <h3>NPO Number:</h3>               
+        </div>
+        <div class="col-sm-4">            
+            <h4>{{ NPONum }}</h4>               
+        </div>
+    </div> 
+
+    <div class="row justify-content-md-center">            
+        <div class="col-sm-2">            
+            <h3>PAYE Number:</h3>               
+        </div>
+        <div class="col-sm-4">            
+            <h4>{{ PAYENum }}</h4>               
+        </div>
+    </div> 
+
+
+    <div class="row justify-content-md-center">
+        <div class="col-sm-6">
+            <h2>Contact Information</h2>            
+        </div>          
+    </div>
+
+    <div class="row justify-content-md-center">            
+        <div class="col-sm-2">            
+            <h3>Website:</h3>               
+        </div>
+        <div class="col-sm-4">            
+            <h4>{{ website }}</h4>               
+        </div>
+    </div> 
+
+    <div class="row justify-content-md-center">            
+        <div class="col-sm-2">            
+            <h3>Fax Number:</h3>               
+        </div>
+        <div class="col-sm-4">            
+            <h4>{{ faxNum }}</h4>               
+        </div>
+    </div> 
+   
+    <div class="row justify-content-md-center">
+        <div class="col-sm-2">
+            <button mat-stroked-button color="accent" (click)="onDone()">Done</button>            
+         </div>        
+    </div>       
+    
+</div>
+
+
+         
+       
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+

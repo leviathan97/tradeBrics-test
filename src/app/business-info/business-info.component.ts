@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+
+import { Business } from '../business.model';
+import { Builder } from 'protractor';
 
 interface Industry{
   value: string;
@@ -23,30 +26,27 @@ interface Turnover{
 
 export class BusinessInfoComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) { 
+    
+  }
 
-  ngOnInit(): void {    
-  } 
-
-  generalInfo = new FormGroup({
-    foundingYear: new FormControl(''),
-    industry: new FormControl(''),
-    size: new FormControl(''),
+  businessForm = new FormGroup({
+    foundingYear: new FormControl(),
+    industry: new FormControl(),
+    size: new FormControl(),
+    practiceNum: new FormControl(),
+    turnover: new FormControl(),
+    trustNum: new FormControl(),
+    NPONum: new FormControl(),
+    PAYENum: new FormControl(),
+    website:  new FormControl(),
+    faxNum: new FormControl()
   });
 
-  legalInfo = new FormGroup({
-    practiceNum: new FormControl(''),
-    turnover: new FormControl(''),
-    trustNum: new FormControl(''),
-    NPONum: new FormControl(''),
-    PAYENum: new FormControl('')
-  });
+  ngOnInit(): void {        
+  }
 
-  contactInfo= new FormGroup({
-    website: new FormControl(''),
-    faxNum: new FormControl(''),
-  });
-
+  
   industries: Industry[] = [
     {value: 'Education'},
     {value: 'Engineering'},
@@ -66,46 +66,30 @@ export class BusinessInfoComponent implements OnInit {
     {value: '<R1 500 000'}
   ];
 
-  foundingYear: string;
-  industry: string;
-  size: string;
-  practiceNum: string;
-  turnover: string;
-  trustNum: string;
-  NPONum: string;
-  PAYENum: string;
-  website: string;
-  faxNum: string;
+  business: Business;
 
-  submitGeneral(){
-    this.foundingYear = this.generalInfo.controls['foundingYear'].value;
-    this.industry = this.generalInfo.controls['industry'].value;
-    this.size = this.generalInfo.controls['size'].value;    
-  }
-
-  submitLegal(){
-    this.practiceNum = this.legalInfo.controls['practiceNum'].value;
-    this.turnover = this.legalInfo.controls['turnover'].value;
-    this.trustNum = this.legalInfo.controls['trustNum'].value;
-    this.NPONum = this.legalInfo.controls['NPONum'].value;
-    this.PAYENum = this.legalInfo.controls['PAYENum'].value;
-  }
-
-  submitContact(){
-    this.website = this.contactInfo.controls['website'].value;
-    this.faxNum = this.contactInfo.controls['faxNum'].value;
+  onSubmit(){
+    this.business = new Business(this.businessForm.controls['foundingYear'].value,
+    this.businessForm.controls['industry'].value,
+    this.businessForm.controls['size'].value,
+    this.businessForm.controls['practiceNum'].value,
+    this.businessForm.controls['turnover'].value,
+    this.businessForm.controls['trustNum'].value,
+    this.businessForm.controls['NPONum'].value,
+    this.businessForm.controls['PAYENum'].value,
+    this.businessForm.controls['website'].value,
+    this.businessForm.controls['faxNum'].value);  
   }
 
 
-  onClickMe(){
-    this.submitGeneral();
-    this.submitLegal();
-    this.submitContact();    
-  }
+  
 
-  onDone(){
-    this.router.navigateByUrl('/goodbye');
-  }
- 
+
+
+  
+  
+    
+  
+
 
 }

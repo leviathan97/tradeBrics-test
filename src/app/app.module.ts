@@ -6,11 +6,11 @@ import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatButtonModule} from '@angular/material/button';
 
 import { BusinessInfoComponent } from './business-info/business-info.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
@@ -18,6 +18,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { GoodbyeComponent } from './goodbye/goodbye.component';
+import { SummaryComponent } from './summary/summary.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { GoodbyeComponent } from './goodbye/goodbye.component';
     AppComponent,
     BusinessInfoComponent,
     MainNavComponent,
-    GoodbyeComponent
+    GoodbyeComponent,
+    SummaryComponent
   ],
   imports: [
     BrowserModule,
@@ -34,14 +36,14 @@ import { GoodbyeComponent } from './goodbye/goodbye.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
     MatSidenavModule,
     LayoutModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
